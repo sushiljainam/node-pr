@@ -3,7 +3,7 @@ fs = require('fs');
 
 var htmlfile = {};
 
-function home(htmlPath,response) {
+function home(htmlPath,response,rUsers) {
   console.log("Executing home handler");
   htmlfile.Home = fs.readFileSync(htmlPath+'home.html').toString();
   response.writeHead(200,{"Content-Type":"text/html"});
