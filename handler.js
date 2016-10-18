@@ -18,15 +18,15 @@ exports.home = home;
 
 function user(htmlPath,response,username,rUsers) {
   console.log("Executing 'user' handler");
-  response.writeHead(200,{"Content-Type":"text/plain"});
+  response.writeHead(200,{"Content-Type":"text/html"});
   response.write("working as user: " + username);
   if(isRegistered(username,rUsers)){
-    response.write("\nalready registered");
+    response.write("<p>already registered</p>");
   }else{
-    response.write("\nnew user");
+    response.write("<p><strong>new user</strong></p>");
   };
-  response.write("\nmessage to : ");
-  // showDDexcept(username);
+  response.write("<p>message to : "+showDDexcept(username, rUsers)+"</p>");
+  response.write("<textarea></textarea>")
   response.end();
 }
 exports.user = user;
@@ -44,4 +44,16 @@ function prepareScriptUsers(users){
 
 function isRegistered(u,uArray){
   return uArray.indexOf(u) > -1;
+}
+
+function showDDexcept(u,us) {
+  var res = "";
+  res += "<select class='' name=''>";
+  for (var i = 0; i < us.length; i++) {
+    if(u!==us[i]){
+      res += "<option value='"+i+"'>"+us[i]+"</option>";
+    }
+  }
+  res += "</select>";
+  return res;
 }
