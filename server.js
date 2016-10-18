@@ -19,7 +19,7 @@ function startServer (route,handle,htmlPath) {
     });
   }
 
-	var port = 8878;
+	var port = 8880;
 	http.createServer(onRequest).listen(port);
 
 	console.log("server started at localhost:"+ port);
