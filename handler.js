@@ -28,7 +28,7 @@ function prepareScriptUsers(users){
   var res = "";
   res += "<script type='text/javascript'> window.addEventListener('load', function(event) { console.log('All resources finished loading!'); ul = document.getElementById('users');";
   for (var i = 0; i < users.length; i++) {
-    res += " li = document.createElement('li'); li.appendChild(document.createTextNode('"+users[i]+"')); ul.appendChild(li);";
+    res += " li = document.createElement('li'); a = document.createElement('a');  a.appendChild(document.createTextNode('"+users[i]+"')); a.setAttr li.appendChild(a) ul.appendChild(li);";
 
   }
   res += " });</script>";
