@@ -8,11 +8,13 @@ function home(htmlPath,response,rUsers) {
   htmlfile.Home = fs.readFileSync(htmlPath+'home.html').toString();
   response.writeHead(200,{"Content-Type":"text/html"});
   response.write(htmlfile.Home);
-  response.write(rUsers.toString());
-  var scriptString = "<script type='text/javascript'> window.addEventListener('load', function(event) { console.log('All resources finished loading!'); ul = document.getElementById('users'); li = document.createElement('li'); li.appendChild(document.createTextNode('Four')); ul.appendChild(li); });</script>";
+  // response.write(rUsers.toString());
+
+  var scriptString = prepareScriptUsers(rUsers);
   response.write(scriptString);
   response.end();
 }
+exports.home = home;
 
 function user(htmlPath,response,username) {
   console.log("Executing 'user' handler");
@@ -20,5 +22,15 @@ function user(htmlPath,response,username) {
   response.write("working as user: " + username);
   response.end();
 }
-exports.home = home;
 exports.user = user;
+
+function prepareScriptUsers(users){
+  var res = "";
+  res += "<script type='text/javascript'> window.addEventListener('load', function(event) { console.log('All resources finished loading!'); ul = document.getElementById('users');";
+  for (var i = 0; i < users.length; i++) {
+    res += " li = document.createElement('li'); li.appendChild(document.createTextNode('"+users[i]+"')); ul.appendChild(li);";
+
+  }
+  res += " });</script>";
+  return res;
+}

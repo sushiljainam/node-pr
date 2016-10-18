@@ -2,7 +2,7 @@
 function route(handle,htmlPath,pathname,response,reviewData){
   var init = require('./init');
   rUsers = init.users();
-	console.log("Routing a reqest forrr " + pathname);
+	console.log("Routing a reqest for " + pathname);
   username = getUserParsePath(pathname);
 	if(typeof handle[pathname] === 'function'){
 		handle[pathname](htmlPath,response,rUsers);
