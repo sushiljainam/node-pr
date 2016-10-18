@@ -25,8 +25,11 @@ function user(htmlPath,response,username,rUsers) {
   }else{
     response.write("<p><strong>new user</strong></p>");
   };
+  response.write("<form action='' method='post'>");
   response.write("<p>message to : "+showDDexcept(username, rUsers)+"</p>");
-  response.write("<textarea></textarea>")
+  response.write("<textarea name='msg'></textarea>");
+  response.write(showSendBtn());
+  response.write("</form>");
   response.end();
 }
 exports.user = user;
@@ -48,12 +51,18 @@ function isRegistered(u,uArray){
 
 function showDDexcept(u,us) {
   var res = "";
-  res += "<select class='' name=''>";
+  res += "<select class='' name='rcvr'>";
   for (var i = 0; i < us.length; i++) {
     if(u!==us[i]){
       res += "<option value='"+i+"'>"+us[i]+"</option>";
     }
   }
   res += "</select>";
+  return res;
+}
+
+function showSendBtn() {
+  var res = "";
+  res += "<input type='submit' name='send' value='Send!' />";
   return res;
 }
