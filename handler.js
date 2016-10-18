@@ -16,10 +16,17 @@ function home(htmlPath,response,rUsers) {
 }
 exports.home = home;
 
-function user(htmlPath,response,username) {
+function user(htmlPath,response,username,rUsers) {
   console.log("Executing 'user' handler");
   response.writeHead(200,{"Content-Type":"text/plain"});
   response.write("working as user: " + username);
+  if(isRegistered(username,rUsers)){
+    response.write("\nalready registered");
+  }else{
+    response.write("\nnew user");
+  };
+  response.write("\nmessage to : ");
+  // showDDexcept(username);
   response.end();
 }
 exports.user = user;
@@ -33,4 +40,8 @@ function prepareScriptUsers(users){
   }
   res += " });</script>";
   return res;
+}
+
+function isRegistered(u,uArray){
+  return uArray.indexOf(u) > -1;
 }

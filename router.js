@@ -8,7 +8,7 @@ function route(handle,htmlPath,pathname,response,reviewData){
 		handle[pathname](htmlPath,response,rUsers);
 	}
   else if (username) {
-    handle['user'](htmlPath,response,username);
+    handle['user'](htmlPath,response,username,rUsers);
   }
   else{
 		console.log("No handler for " + pathname);
