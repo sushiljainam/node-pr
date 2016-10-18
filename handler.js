@@ -8,6 +8,9 @@ function home(htmlPath,response,rUsers) {
   htmlfile.Home = fs.readFileSync(htmlPath+'home.html').toString();
   response.writeHead(200,{"Content-Type":"text/html"});
   response.write(htmlfile.Home);
+  response.write(rUsers.toString());
+  var scriptString = "<script type='text/javascript'> window.addEventListener('load', function(event) { console.log('All resources finished loading!'); ul = document.getElementById('users'); li = document.createElement('li'); li.appendChild(document.createTextNode('Four')); ul.appendChild(li); });</script>";
+  response.write(scriptString);
   response.end();
 }
 

@@ -12,8 +12,9 @@ function route(handle,htmlPath,pathname,response,reviewData){
   }
   else{
 		console.log("No handler for " + pathname);
-		response.writeHead(404,{"Content-Type": "text/plain"});
+		response.writeHead(404,{"Content-Type": "text/html"});
 		response.write("Error 404 page not found");
+    response.write("<h4>go to <a href='http://localhost:"+8878+"'>home</a><h4>");
 		response.end();
 	}
 }
