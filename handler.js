@@ -11,10 +11,10 @@ function home(htmlPath,response) {
   response.end();
 }
 
-function user(htmlPath,response) {
+function user(htmlPath,response,username) {
   console.log("Executing 'user' handler");
   response.writeHead(200,{"Content-Type":"text/plain"});
-  response.write("working as user ");
+  response.write("working as user: "+username);
   response.end();
 }
 exports.home = home;

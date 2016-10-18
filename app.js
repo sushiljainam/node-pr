@@ -10,7 +10,7 @@ var handle = {};
 handle["/"] = handler.home;
 handle["/login"] = handler.home;
 handle["/user/"] = handler.home;
-// handle["/user/.*"] = handler.user;
+handle["user"] = handler.user;
 // handle["/"] = handler.home;
 
-server.start(router.route,handle,htmlPath,rUsers);
+server.start(router.route,handle,htmlPath);

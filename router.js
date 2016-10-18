@@ -2,10 +2,13 @@ var init = require('./init');
 
 function route(handle,htmlPath,pathname,response,reviewData){
 	console.log("Routing a reqest for " + pathname);
-  getUserParsePath(pathname);
+  username = getUserParsePath(pathname);
 	if(typeof handle[pathname] === 'function'){
-		handle[pathname](htmlPath,response,reviewData);
+		handle[pathname](htmlPath,response);
 	}
+  else if (username) {
+    handle['user'](htmlPath,response,username);
+  }
   else{
 		console.log("No handler for " + pathname);
 		response.writeHead(404,{"Content-Type": "text/plain"});
@@ -14,7 +17,8 @@ function route(handle,htmlPath,pathname,response,reviewData){
 	}
 }
 function getUserParsePath(pathname) {
-  ;
-  console.log(pathname.split("/user/"));
+  username = pathname.split("/user/")[1];
+  console.log("username is :"+ username);
+  return username;
 }
 exports.route = route;
