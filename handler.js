@@ -38,7 +38,7 @@ function prepareScriptUsers(users){
   var res = "";
   res += "<script type='text/javascript'> window.addEventListener('load', function(event) { console.log('All resources finished loading!'); ul = document.getElementById('users');";
   for (var i = 0; i < users.length; i++) {
-    res += " li = document.createElement('li'); a = document.createElement('a');  a.appendChild(document.createTextNode('"+users[i]+"')); a.setAttribute('href','./user/"+users[i]+"'); li.appendChild(a); ul.appendChild(li);";
+    res += " li = document.createElement('li'); a = document.createElement('a');  a.appendChild(document.createTextNode('"+users[i]+"')); a.setAttribute('href','./user/"+users[i]+"'); li.appendChild(a); setTimeout(ul.appendChild(li),1000);";
 
   }
   res += " });</script>";
