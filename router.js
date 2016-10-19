@@ -8,6 +8,7 @@ function route(handle,htmlPath,pathname,response,reviewData){
 		handle[pathname](htmlPath,response,rUsers);
 	}
   else if (username) {
+    //TODO: create socket connection, set data,
     handle['user'](htmlPath,response,username,rUsers);
   }
   else{
