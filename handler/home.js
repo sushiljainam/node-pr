@@ -1,6 +1,6 @@
 function home(htmlPath,response,rUsers) {
   console.log("Executing home handler");
-  htmlfileHome = fs.readFileSync('./home.html').toString();
+  htmlfileHome = fs.readFileSync('handler/home.html').toString();
   response.writeHead(200,{"Content-Type":"text/html"});
   response.write(htmlfileHome);
   // response.write(rUsers.toString());
@@ -9,7 +9,7 @@ function home(htmlPath,response,rUsers) {
   response.write(scriptString);
   response.end();
 }
-exports = home();
+exports = home;
 console.log(home);
 console.log(exports);
 
